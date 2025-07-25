@@ -1,4 +1,5 @@
 #import needed modules from other files
+import sys
 from stats import (
     get_count_words,
     get_character_count,
@@ -6,10 +7,15 @@ from stats import (
 )
 
 
+
 # this is the main function that calls get_book_text and prints the book text
 def main():
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
     #filepath to the book
-    filepath = "books/frankenstein.txt"
+    filepath = sys.argv[1]
     #get the book text as string from book file
     book_text = get_book_text(filepath)
     #get word count from book text
